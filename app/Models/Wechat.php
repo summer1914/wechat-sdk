@@ -7,9 +7,10 @@ use DB;
 
 class Wechat extends User
 {
-    const TOKEN = 'nGM5WxHeRWIXsOjCbAjm4lYAZJL/SpuylEzvDK8LPCQ=';
+    const TOKEN = 'nGM5WxHeRWIXsOjCbAjm4Y';
     const PERMANENT = 'QR_LIMIT_SCENE';
     const TEMPOR = 'QR_SCENE';
+    const AESKEY = 'hLNoD5nkMzI3HwipVR7wArAM9thz1MbNdDFwtolEwmk';
 
     public static function makeCode($param = null, $type = self::TEMPOR)
     {
