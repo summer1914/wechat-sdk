@@ -57,7 +57,7 @@ class Wechat extends User
     {
         if(self::checkSignature($nonce, $signature, $timestamp)){
             $response && self::responseMsg();
-            Log::info('valid successfully: '.$_SERVER["REMOTE_ADDR"].(strstr($_SERVER["REMOTE_ADDR"],'101.226')? " FROM WeiXin": "Unknown IP");
+            Log::info('valid successfully: '.$_SERVER["REMOTE_ADDR"].(strstr($_SERVER["REMOTE_ADDR"],'101.226')? " FROM WeiXin": "Unknown IP"));
             return true;
         } else {
             return false;
@@ -73,7 +73,7 @@ class Wechat extends User
         if ($temStr === $signature) {
             return true;
         }
-        Log::info('valid failed: '.$_SERVER["REMOTE_ADDR"].(strstr($_SERVER["REMOTE_ADDR"],'101.226')? " FROM WeiXin": "Unknown IP".'sign:'.$signature.';codeSign:'.$temStr);
+        Log::info('valid failed: '.$_SERVER["REMOTE_ADDR"].(strstr($_SERVER["REMOTE_ADDR"],'101.226')? " FROM WeiXin": "Unknown IP".'sign:'.$signature.';codeSign:'.$temStr));
         return false;
     }
 
