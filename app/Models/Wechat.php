@@ -67,7 +67,7 @@ class Wechat extends User
     private static function checkSignature($nonce = null, $signature = null, $timestamp = null)
     {
         $tem =  array(self::TOKEN, $timestamp, $nonce);
-        sort($tem);
+        sort($tem, SORT_STRING);
         $temStr = sha1(implode($tem));
 
         if ($temStr === $signature) {
