@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use DB;
 use Carbon\Carbon;
 use App\Models\Wechat;
+use Illuminate\Support\Facades\Log;
 
 class GetPeopleController extends Controller
 {
@@ -20,8 +21,7 @@ class GetPeopleController extends Controller
         if (!Wechat::valid($nonce, $signature, $timestamp)) {
             abort(401);
         } else {
-            echo($echoStr);
-            return $echoStr;
+            return response()->json($echoStr);
         }
     }
 
