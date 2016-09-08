@@ -12,6 +12,9 @@ class Wechat extends User
     const PERMANENT = 'QR_LIMIT_SCENE';
     const TEMPOR = 'QR_SCENE';
     const AESKEY = 'hLNoD5nkMzI3HwipVR7wArAM9thz1MbNdDFwtolEwmk';
+    const API = 'https://sh.api.weixin.qq.com';
+    const APPID = 'wx5734fab052c4d148';
+    const SECRET = 'f72346ca61abf08f16b07dae3b2410e9';
 
     public static function makeCode($param = null, $type = self::TEMPOR)
     {
@@ -29,7 +32,7 @@ class Wechat extends User
         }
 
         $request = new Client();
-        $res = $request->request('POST', 'https://api.weixin.qq.com/cgi-bin/qrcode/create', [
+        $res = $request->request('POST', self::API.'/cgi-bin/qrcode/create', [
             'json' => $data,
             'query' =>  ['access_token' => self::TOKEN]
             ])->getBody()->getContent();
