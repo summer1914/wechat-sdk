@@ -20,6 +20,7 @@ class GetPeopleController extends Controller
         if (!Wechat::valid($nonce, $signature, $timestamp)) {
             abort(401);
         } else {
+            echo($echoStr);
             return $echoStr;
         }
     }
