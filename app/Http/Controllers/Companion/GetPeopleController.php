@@ -8,7 +8,6 @@ use DB;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
 use App\Models\Wechat;
-use Illuminate\Support\Facades\Log;
 
 class GetPeopleController extends Controller
 {
@@ -30,7 +29,7 @@ class GetPeopleController extends Controller
 
     public function makeCode()
     {
-        $tem = Wechat::makeCode($param = ['orderId' = 'E123456789']);
+        $tem = Wechat::makeCode(['orderId' => 'E123456789']);
         $code = Wechat::downloadCode($tem['ticket']);
         return $code;
     }
