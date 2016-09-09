@@ -49,6 +49,6 @@ class AccessToken extends Command
             'query' => ['grant_type' => 'client_credential', 'appid' => Wechat::APPID, 'secret' => Wechat::SECRET]
             ])->getBody()->getContents();
         $res = json_decode($res, true);
-        isset($res['access_token']) && DB::table('planet.app_info')->where('appID', Wechat::APPID)->update(['access_token' => $res['access_token']])
+        isset($res['access_token']) && DB::table('planet.app_info')->where('appID', Wechat::APPID)->update(['access_token' => $res['access_token']]);
     }
 }

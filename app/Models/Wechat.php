@@ -66,8 +66,9 @@ class Wechat extends User
         }
 
         $client = new Client();
+
         $res = $client->request('GET', self::CODEURL, [
-            'query' => ['ticket' => urlencode($ticket)]
+            'query' => ['ticket' => $ticket]
             ])->getBody()->getContents();
 
         return $res;
