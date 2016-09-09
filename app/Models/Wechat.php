@@ -27,7 +27,7 @@ class Wechat extends User
     {
         $accessToken = DB::table('planet.app_info')->where('appID', self::APPID)->first();
         if($accessToken === null) {
-            return ['error' => 1, 'error_msg' => 'access_token not found'];
+            return ['errcode' => 1, 'errmsg' => 'access_token not found'];
         } else {
             $accessToken = $accessToken->access_token;
         }
@@ -128,6 +128,28 @@ class Wechat extends User
             echo "感谢你那么好看还关注稻稻星球，么么！";
             exit;
         }
+    }
+
+    public static function shortUrl($originUrl = null)
+    {
+        if ($originUrl === null) {
+            return null;
+        }
+
+        $accessToken = DB::table('planet.app_info')->where('appID', self::APPID)->first();
+        if($accessToken === null) {
+            return ['errcode' => 1, 'errmsg' => 'access_token not found'];
+        } else {
+            $accessToken = $accessToken->access_token;
+        }
+
+        $client = new Client();
+        $res = $client->request('POST', self::API.'/cgi-bin/shorturl',[
+            'query' => ['access_token' => $accessToken],
+            'json' => ['action' => 'long2short', 'long_url'  => $originUrl]
+            ])->getBody()->getContents();
+
+        return json_decode($res, true);
     }
 
 }
