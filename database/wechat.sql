@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS `app_info` (
     `aesKey` VARCHAR(60) NULL DEFAULT 'hLNoD5nkMzI3HwipVR7wArAM9thz1MbNdDFwtolEwmk',
     `token` VARCHAR(60) NULL DEFAULT 'nGM5WxHeRWIXsOjCbAjm4Y',
     `url` VARCHAR(60) NULL  COMMENT 'URL(服务器地址)',
-    `access_token` VARCHAR(60) NULL  DEFAULT '',
+    `access_token` VARCHAR(150) NULL  DEFAULT '',
     `created_at` timestamp DEFAULT '0000-00-00 00:00:00',
     `updated_at` timestamp DEFAULT '0000-00-00 00:00:00',
     `deleted_at` timestamp NULL DEFAULT NULL,

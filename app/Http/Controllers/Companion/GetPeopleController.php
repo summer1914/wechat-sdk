@@ -30,8 +30,7 @@ class GetPeopleController extends Controller
     public function makeCode()
     {
         $tem = Wechat::makeCode(['orderId' => 'E123456789']);
-        $code = Wechat::downloadCode($tem['ticket']);
-        return $code;
+        return Wechat::CODEURL.'?ticket='.urlencode($item['ticket']);
     }
 
 }

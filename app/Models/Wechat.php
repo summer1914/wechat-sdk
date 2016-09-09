@@ -15,6 +15,7 @@ class Wechat extends User
     const API = 'https://sh.api.weixin.qq.com';
     const APPID = 'wx5734fab052c4d148';
     const SECRET = 'f72346ca61abf08f16b07dae3b2410e9';
+    const CODEURL = 'https://mp.weixin.qq.com/cgi-bin/showqrcode';
 
 /**
  * [makeCode 创建二维码ticket]
@@ -65,8 +66,7 @@ class Wechat extends User
         }
 
         $client = new Client();
-        $url = 'https://mp.weixin.qq.com/cgi-bin/showqrcode';
-        $res = $client->request('GET', $url, [
+        $res = $client->request('GET', self::CODEURL, [
             'query' => ['ticket' => urlencode($ticket)]
             ])->getBody()->getContents();
 
