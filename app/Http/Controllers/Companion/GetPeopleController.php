@@ -14,7 +14,7 @@ class GetPeopleController extends Controller
     public function entarnce(Request $request)
     {
         $weObj = new Planet();
-        //$weObj->valid();//明文或兼容模式可以在接口验证通过后注释此句，但加密模式一定不能注释，否则会验证失败
+        $weObj->valid();//明文或兼容模式可以在接口验证通过后注释此句，但加密模式一定不能注释，否则会验证失败
         $type = $weObj->getRev()->getRevType();
         switch($type) {
             case Planet::MSGTYPE_TEXT:
@@ -35,7 +35,7 @@ class GetPeopleController extends Controller
     {
 	Log::info('here');
         $weObj = new Planet();
-        //$weObj->valid();//明文或兼容模式可以在接口验证通过后注释此句，但加密模式一定不能注释，否则会验证失败
+        $weObj->valid();//明文或兼容模式可以在接口验证通过后注释此句，但加密模式一定不能注释，否则会验证失败
         $type = $weObj->getRev()->getRevType();
         switch($type) {
             case Planet::MSGTYPE_TEXT:
