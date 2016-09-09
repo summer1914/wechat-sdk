@@ -24,6 +24,13 @@ class Wechat extends User
  */
     public static function makeCode($param = null, $type = self::TEMPOR)
     {
+        $accessToken = DB::table('planet.app_info')->where('appID', self::APPID)->first();
+        if($accessToken === null) {
+            return ['error' => 1, 'error_msg' => 'access_token not found'];
+        } else {
+            $accessToken = $accessToken->access_token;
+        }
+
         if ($param === null) {
             return;
         }
@@ -40,7 +47,7 @@ class Wechat extends User
         $request = new Client();
         $res = $request->request('POST', self::API.'/cgi-bin/qrcode/create', [
             'json' => $data,
-            'query' =>  ['access_token' => $_SESSION['access_token']]
+            'query' =>  ['access_token' => $accessToken]
             ])->getBody()->getContents();
 
         return json_decode($res, true);
@@ -60,7 +67,7 @@ class Wechat extends User
         $client = new Client();
         $url = 'https://mp.weixin.qq.com/cgi-bin/showqrcode';
         $res = $client->request('GET', $url, [
-            'query' => ['ticket' => urlencode($ticket)]
+            'query' => ['ticket' => $ticket]
             ])->getBody()->getContents();
 
         return $res;
