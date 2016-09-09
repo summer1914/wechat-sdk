@@ -17,13 +17,13 @@ class GetPeopleController extends Controller
         //$weObj->valid();//明文或兼容模式可以在接口验证通过后注释此句，但加密模式一定不能注释，否则会验证失败
         $type = $weObj->getRev()->getRevType();
         switch($type) {
-            case Wechat::MSGTYPE_TEXT:
-                    $weObj->text("hello, I'm wechat")->reply();
+            case Planet::MSGTYPE_TEXT:
+                    $weObj->text("hello, I'm Planet")->reply();
                     exit;
                     break;
-            case Wechat::MSGTYPE_EVENT:
+            case Planet::MSGTYPE_EVENT:
                     break;
-            case Wechat::MSGTYPE_IMAGE:
+            case Planet::MSGTYPE_IMAGE:
                     break;
             default:
                     $weObj->text("help info")->reply();
@@ -36,13 +36,13 @@ class GetPeopleController extends Controller
         //$weObj->valid();//明文或兼容模式可以在接口验证通过后注释此句，但加密模式一定不能注释，否则会验证失败
         $type = $weObj->getRev()->getRevType();
         switch($type) {
-            case Wechat::MSGTYPE_TEXT:
-                    $weObj->text("hello, I'm wechat")->reply();
+            case Planet::MSGTYPE_TEXT:
+                    $weObj->text("hello, I'm Planet")->reply();
                     exit;
                     break;
-            case Wechat::MSGTYPE_EVENT:
+            case Planet::MSGTYPE_EVENT:
                     break;
-            case Wechat::MSGTYPE_IMAGE:
+            case Planet::MSGTYPE_IMAGE:
                     break;
             default:
                     $weObj->text("help info")->reply();
