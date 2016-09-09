@@ -21,9 +21,7 @@ class GetPeopleController extends Controller
         if (!Wechat::valid($nonce, $signature, $timestamp)) {
             abort(401);
         } else {
-	   // Log::info('echoStr:'.$echoStr);
-          //  Log::info('request:'.'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']."\r\n");
-	  
+	   
             return response()->json($echoStr);
         }
     }
