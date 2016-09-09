@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
 use App\Models\Wechat;
 use Illuminate\Support\Facades\Log;
 
@@ -16,7 +17,9 @@ class GetPeopleController extends Controller
         $signature = $request->get('signature');
         $timestamp = $request->get('timestamp');
         $nonce = $request->get('nonce');
-        $echostr = $request->get('echoStr');
+
+        $echoStr = $_GET["echostr"];
+
 
         if (!Wechat::valid($nonce, $signature, $timestamp)) {
             abort(401);
