@@ -35,7 +35,7 @@ class Wechat extends User
         $res = $request->request('POST', self::API.'/cgi-bin/qrcode/create', [
             'json' => $data,
             'query' =>  ['access_token' => self::TOKEN]
-            ])->getBody()->getContent();
+            ])->getBody()->getContents();
 
         return $res;
     }
@@ -50,7 +50,7 @@ class Wechat extends User
         $url = 'https://mp.weixin.qq.com/cgi-bin/showqrcode';
         $res = $client->request('GET', $url, [
             'query' => ['ticket' => urlencode($ticket)]
-            ])->getBody()->getContent();
+            ])->getBody()->getContents();
 
         return $res;
 
