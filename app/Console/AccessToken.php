@@ -49,6 +49,8 @@ class AccessToken extends Command
             'query' => ['grant_type' => 'client_credential', 'appid' => Wechat::APPID, 'secret' => Wechat::SECRET]
             ])->getBody()->getContents();
         $res = json_decode($res, true);
-        isset($res['access_token']) && session(['access_token' => $res['access_token']]);
+	var_dump($res);
+        isset($res['access_token']) && $_SESSION['access_token'] = $res['access_token'];
+	var_dump(session('access_token'));
     }
 }

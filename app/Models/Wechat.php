@@ -40,7 +40,7 @@ class Wechat extends User
         $request = new Client();
         $res = $request->request('POST', self::API.'/cgi-bin/qrcode/create', [
             'json' => $data,
-            'query' =>  ['access_token' => session('access_token')]
+            'query' =>  ['access_token' => $_SESSION['access_token']]
             ])->getBody()->getContents();
 
         return json_decode($res, true);
