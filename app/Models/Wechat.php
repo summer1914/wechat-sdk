@@ -16,6 +16,12 @@ class Wechat extends User
     const APPID = 'wx5734fab052c4d148';
     const SECRET = 'f72346ca61abf08f16b07dae3b2410e9';
 
+/**
+ * [makeCode 创建二维码ticket]
+ * @param  [array] $param [param into code]
+ * @param  [string] $type  [TEMPOR or PERMANENT]
+ * @return [array]        ['ticket' => '', 'url' => '']
+ */
     public static function makeCode($param = null, $type = self::TEMPOR)
     {
         if ($param === null) {
@@ -24,22 +30,27 @@ class Wechat extends User
 
         $data = [
         'action_name' => $type,
-        'action_info' => ['scene' => ['scene_id' => $param]],
+        'action_info' => ['scene' => $param],
         ];
 
         if ($type === self::TEMPOR) {
-            $data['expire_seconds'] = 604800;
+            $data['expire_seconds'] = 2592000;
         }
 
         $request = new Client();
         $res = $request->request('POST', self::API.'/cgi-bin/qrcode/create', [
             'json' => $data,
-            'query' =>  ['access_token' => self::TOKEN]
+            'query' =>  ['access_token' => session('access_token')]
             ])->getBody()->getContents();
 
-        return $res;
+        return json_decode($res, true);
     }
 
+/**
+ * [downloadCode 获取二维码]
+ * @param  [type] $ticket [ticket]
+ * @return [type]         [二维码图片]
+ */
     public static function downloadCode($ticket = null)
     {
         if ($ticket === null) {
