@@ -45,7 +45,7 @@ class AccessToken extends Command
     public function getToken()
     {
         $client = new Client();
-        $res = $client->request('GET', Wechat::API.'cgi-bin/token', [
+        $res = $client->request('GET', Wechat::API.'/cgi-bin/token', [
             'query' => ['grant_type' => 'client_credential', 'appid' => Wechat::APPID, 'secret' => Wechat::SECRET]
             ])->getBody()->getContents();
         $res = json_decode($res);
