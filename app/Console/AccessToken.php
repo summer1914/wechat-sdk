@@ -3,7 +3,7 @@
 namespace App\Console;
 
 use Illuminate\Console\Command;
-use App\Models\Wechat;
+use App\Models\Planet;
 use GuzzleHttp\Client;
 use DB;
 class AccessToken extends Command
@@ -45,10 +45,10 @@ class AccessToken extends Command
     public function getToken()
     {
         $client = new Client();
-        $res = $client->request('GET', Wechat::API.'/cgi-bin/token', [
-            'query' => ['grant_type' => 'client_credential', 'appid' => Wechat::APPID, 'secret' => Wechat::SECRET]
+        $res = $client->request('GET', Planet::API.'/cgi-bin/token', [
+            'query' => ['grant_type' => 'client_credential', 'appid' => Planet::APPID, 'secret' => Planet::SECRET]
             ])->getBody()->getContents();
         $res = json_decode($res, true);
-        isset($res['access_token']) && DB::table('planet.app_info')->where('appID', Wechat::APPID)->update(['access_token' => $res['access_token']]);
+        isset($res['access_token']) && DB::table('planet.app_info')->where('appID', Planet::APPID)->update(['access_token' => $res['access_token']]);
     }
 }

@@ -13,4 +13,5 @@
 
 
 Route::get('/', 'Companion\\GetPeopleController@entarnce');
+Route::post('/', 'Companion\\GetPeopleController@message');
 Route::get('/code', 'Companion\\GetPeopleController@makeCode');
