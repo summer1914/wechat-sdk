@@ -36,7 +36,7 @@ class GetPeopleController extends Controller
                 $weObj->text("help info")->reply();
         }
 
-        Log::info("(".$weObj->getRev().";".$type);
+        Log::info("(".$weObj->getRev()->getRevContent().";".$type);
 
     }
 
