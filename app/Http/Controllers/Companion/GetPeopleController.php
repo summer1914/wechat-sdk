@@ -21,15 +21,18 @@ class GetPeopleController extends Controller
         $type = $weObj->getRev()->getRevType();
         switch($type) {
             case Planet::MSGTYPE_TEXT:
-                    $weObj->text("hello, I'm Planet")->reply();
-                    exit;
-                    break;
+                $weObj->text("hello, I'm Planet")->reply();
+                exit;
+                break;
             case Planet::MSGTYPE_EVENT:
-                    break;
+                break;
             case Planet::MSGTYPE_IMAGE:
-                    break;
+                break;
+            case Planet::EVENT_SCAN:
+                $weObj->text($weObj->getRevSceneId ())->reply();
+                break;
             default:
-                    $weObj->text("help info")->reply();
+                $weObj->text("help info")->reply();
         }
 
     }
@@ -58,8 +61,9 @@ class GetPeopleController extends Controller
 
     public function makeCode()
     {
-        $tem = Planet::makeCode(['scene_id' => '123456789']);
-        return response()->json(['long' => Planet::CODEURL.'?ticket='.urlencode($tem['ticket']), 'short' => Planet::shortUrl(Planet::CODEURL.'?ticket='.urlencode($tem['ticket']))['short_url']]) ;
+        $weObj = new Planet();
+        $QRcode = $weObj->getQRCode(123456789,0,604800);
+        return $weObj->getQRUrl($QRcode['ticket']) ;
     }
 
 }
