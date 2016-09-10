@@ -14,7 +14,6 @@ class GetPeopleController extends Controller
     public function entarnce(Request $request)
     {
         Log::info("\n\nREMOTE_ADDR:".$_SERVER["REMOTE_ADDR"].(strstr($_SERVER["REMOTE_ADDR"],'101.226')? " FROM WeiXin": "Unknown IP"));
-        Log::info("(".$request->method().")QUERY_STRING:".$_SERVER["QUERY_STRING"]);
 
         $weObj = new Planet();
         $weObj->valid();//明文或兼容模式可以在接口验证通过后注释此句，但加密模式一定不能注释，否则会验证失败
@@ -36,6 +35,8 @@ class GetPeopleController extends Controller
             default:
                 $weObj->text("help info")->reply();
         }
+
+        Log::info("(".$request->method().";".$type.")QUERY_STRING:".$_SERVER["QUERY_STRING"]);
 
     }
 
