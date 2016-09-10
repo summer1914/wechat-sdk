@@ -24,9 +24,11 @@ class GetPeopleController extends Controller
                 $weObj->text("hello, I'm Planet")->reply();
                 exit;
                 break;
-            case Planet::MSGTYPE_EVENT:
+            case Planet::EVENT_SUBSCRIBE:
+                $weObj->text($weObj->getRev()->getRevFrom())->reply();
                 break;
-            case Planet::MSGTYPE_IMAGE:
+            case Planet::EVENT_MENU_VIEW:
+                $weObj->text("hello, I'm redirect")->reply();
                 break;
             case Planet::EVENT_SCAN:
                 $weObj->text($weObj->getRevSceneId ())->reply();
@@ -47,15 +49,20 @@ class GetPeopleController extends Controller
         $type = $weObj->getRev()->getRevType();
         switch($type) {
             case Planet::MSGTYPE_TEXT:
-                    $weObj->text("hello, I'm Planet")->reply();
-                    exit;
-                    break;
-            case Planet::MSGTYPE_EVENT:
-                    break;
-            case Planet::MSGTYPE_IMAGE:
-                    break;
+                $weObj->text("hello, I'm Planet")->reply();
+                exit;
+                break;
+            case Planet::EVENT_SUBSCRIBE:
+                $weObj->text($weObj->getRev()->getRevFrom())->reply();
+                break;
+            case Planet::EVENT_MENU_VIEW:
+                $weObj->text("hello, I'm redirect")->reply();
+                break;
+            case Planet::EVENT_SCAN:
+                $weObj->text($weObj->getRevSceneId ())->reply();
+                break;
             default:
-                    $weObj->text("help info")->reply();
+                $weObj->text("help info")->reply();
         }
     }
 
