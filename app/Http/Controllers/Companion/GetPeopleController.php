@@ -29,7 +29,7 @@ class GetPeopleController extends Controller
             case Planet::EVENT_MENU_VIEW:
                 $weObj->text("hello, I'm redirect")->reply();
                 break;
-            case Planet::EVENT_SCAN:
+            case 'event':
                 $weObj->text($weObj->getRevSceneId ())->reply();
                 break;
             default:
