@@ -1,12 +1,14 @@
 # wechat-sdk-packByComposer
-微信公众号开发SDK包
+> Wechat SDK (not production ready).
 
-下载
-`composer require luojia/wechat-sdk`
+## Install
 
-使用
-`
-<?php
+``` bash
+composer require luojia/wechat-sdk
+```
+
+## Quick Start
+```php
 use Wechat\Wechat;
 
 
@@ -34,5 +36,7 @@ switch($type) {
 	default:
 	$testObj->text("help info")->reply();
 }
-`
-更详细的使用文档：(https://github.com/summer1914/wechat-sdk-packByComposer/wiki "Wiki")
+```
+[中文文档](https://github.com/summer1914/wechat-sdk-packByComposer/wiki "Wiki")
+## License
+MIT
