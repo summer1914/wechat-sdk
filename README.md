@@ -37,6 +37,7 @@ switch($type) {
 	$testObj->text("help info")->reply();
 }
 ```
-[中文文档](https://github.com/summer1914/wechat-sdk-packByComposer/wiki "Wiki")
 ## License
 MIT
+
+>函数可基本按照官方文档的规律调用。详细中文文档近期将补上
